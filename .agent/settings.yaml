@@ -3,7 +3,7 @@
 # =============================================================================
 # This file is the single source of truth for agent behaviour in this project.
 # It is read by the generic AGENTS.md entrypoint and referenced by all
-# tool-specific adapter files (CLAUDE.md, .cursorrules, copilot-instructions.md, etc.)
+# tool-specific adapter files (e.g. copilot-instructions.md)
 #
 # Any agent framework that can parse YAML can consume this directly.
 # =============================================================================
@@ -73,8 +73,5 @@ rules:
 # ── Adapters ──────────────────────────────────────────────────────────────────
 # Tool-specific files that load this config. All are thin shims — content lives here.
 adapters:
-  - tool: Claude Code
-    file: CLAUDE.md
-    note: gitignored — generated locally, not committed
   - tool: GitHub Copilot
     file: .github/copilot-instructions.md

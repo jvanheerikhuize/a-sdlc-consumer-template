@@ -12,16 +12,12 @@ It is tool- and model-agnostic: any AI coding assistant can read it.
 ## How It Works
 
 ```
-.agent/settings.yaml          ← canonical config (this directory)
+.agent/settings.yaml            ← canonical config (this directory)
         ↑
         referenced by
         ↓
-AGENTS.md                     ← primary human-readable entry point (all agents)
-CLAUDE.md                     ← Claude Code adapter shim
-.cursorrules                  ← Cursor adapter shim
-.cursor/rules/asdlc.mdc       ← Cursor rules (new format)
+AGENTS.md                       ← primary human-readable entry point (all agents)
 .github/copilot-instructions.md ← GitHub Copilot adapter shim
-.windsurfrules                ← Windsurf adapter shim
 ```
 
 ## Adding a New Agent Adapter

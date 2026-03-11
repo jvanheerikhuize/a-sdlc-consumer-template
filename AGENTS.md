@@ -124,7 +124,6 @@ All tool-specific files are thin shims that point here. No logic lives in them.
 
 | Tool | Adapter file |
 | ---- | ------------ |
-| Claude Code | `CLAUDE.md` *(gitignored — generated locally)* |
 | GitHub Copilot | `.github/copilot-instructions.md` |
 
 To add a new agent: create a thin shim in the tool's required location, point it to `AGENTS.md` and `.agent/settings.yaml`, register it in `.agent/settings.yaml` under `adapters`.

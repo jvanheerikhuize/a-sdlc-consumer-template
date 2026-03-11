@@ -2,10 +2,6 @@
 .DS_Store
 Thumbs.db
 
-# Claude Code — tool-local state and config, not shared
-.claude/
-CLAUDE.md
-
 # Editor
 .vscode/
 .idea/

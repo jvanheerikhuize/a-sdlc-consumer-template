@@ -56,7 +56,6 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 │
 ├── AGENTS.md                        ← Primary agent entry point — all agents read this first
 │
-├── CLAUDE.md                        ← Claude Code adapter shim (gitignored — local only)
 ├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
 │
 ├── README.md                        ← This file
@@ -86,7 +85,6 @@ Tool-specific files are thin shims that simply load these two files.
 
 | Tool | Adapter file |
 | ---- | ------------ |
-| Claude Code | `CLAUDE.md` *(gitignored — local only)* |
 | GitHub Copilot | `.github/copilot-instructions.md` |
 | Any other agent | Read `AGENTS.md` directly |
 
