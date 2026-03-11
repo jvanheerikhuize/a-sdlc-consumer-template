@@ -57,10 +57,7 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 ├── AGENTS.md                        ← Primary agent entry point — all agents read this first
 │
 ├── CLAUDE.md                        ← Claude Code adapter shim
-├── .cursorrules                     ← Cursor adapter shim (legacy format)
-├── .cursor/rules/asdlc.mdc          ← Cursor adapter shim (rules format)
 ├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
-├── .windsurfrules                   ← Windsurf adapter shim
 │
 ├── README.md                        ← This file
 ├── asdlc-consumer.yaml              ← Project configuration (fill in when creating a sibling)
@@ -90,10 +87,7 @@ Tool-specific files are thin shims that simply load these two files.
 | Tool | Adapter file |
 | ---- | ------------ |
 | Claude Code | `CLAUDE.md` |
-| Cursor (legacy) | `.cursorrules` |
-| Cursor (rules) | `.cursor/rules/asdlc.mdc` |
 | GitHub Copilot | `.github/copilot-instructions.md` |
-| Windsurf | `.windsurfrules` |
 | Any other agent | Read `AGENTS.md` directly |
 
 Adding a new agent: create a shim in the tool's required location pointing to `AGENTS.md`, then register it in `.agent/settings.yaml`.

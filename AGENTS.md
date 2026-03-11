@@ -44,10 +44,7 @@ The full startup sequence, including machine-readable form, is also in `.agent/s
 ├── AGENTS.md                        ← This file — primary entry point for all agents
 │
 ├── CLAUDE.md                        ← Claude Code adapter shim → reads AGENTS.md
-├── .cursorrules                     ← Cursor adapter shim (legacy format)
-├── .cursor/rules/asdlc.mdc          ← Cursor adapter shim (rules format)
 ├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
-├── .windsurfrules                   ← Windsurf adapter shim
 │
 ├── README.md                        ← Human-readable project overview
 ├── asdlc-consumer.yaml              ← Project manifest (name, stack, team, regulatory scope)
@@ -129,10 +126,7 @@ All tool-specific files are thin shims that point here. No logic lives in them.
 | Tool | Adapter file |
 | ---- | ------------ |
 | Claude Code | `CLAUDE.md` |
-| Cursor (legacy) | `.cursorrules` |
-| Cursor (rules) | `.cursor/rules/asdlc.mdc` |
 | GitHub Copilot | `.github/copilot-instructions.md` |
-| Windsurf | `.windsurfrules` |
 
 To add a new agent: create a thin shim in the tool's required location, point it to `AGENTS.md` and `.agent/settings.yaml`, register it in `.agent/settings.yaml` under `adapters`.
 

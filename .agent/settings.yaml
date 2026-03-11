@@ -75,11 +75,5 @@ rules:
 adapters:
   - tool: Claude Code
     file: CLAUDE.md
-  - tool: Cursor
-    files:
-      - .cursorrules
-      - .cursor/rules/asdlc.mdc
   - tool: GitHub Copilot
     file: .github/copilot-instructions.md
-  - tool: Windsurf
-    file: .windsurfrules
