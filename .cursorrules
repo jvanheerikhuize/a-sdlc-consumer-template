@@ -1,0 +1,10 @@
+# Cursor Adapter — A-SDLC Consumer Project
+#
+# This is a thin adapter shim. All agent instructions live in AGENTS.md.
+# Structured config (paths, rules, read-only boundaries) is in .agent/settings.yaml.
+
+Before any work, read these files in order:
+1. a-sdlc/directives/core/core-directives.yaml  (IMMUTABLE — absolute precedence)
+2. AGENTS.md                                     (mandatory operating instructions)
+3. .agent/settings.yaml                          (paths, rules, read-only boundaries)
+4. asdlc-consumer.yaml                           (project configuration)

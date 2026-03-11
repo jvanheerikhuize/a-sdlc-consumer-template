@@ -2,20 +2,21 @@
 
 A language- and platform-agnostic project template for agentic, spec-driven software development.
 
-This repository is governed by the [A-SDLC framework](https://github.com/jvanheerikhuize/a-sdlc) — an Agentic Software Development Life Cycle that defines how software is built, tested, and released when AI agents work alongside human developers.
+Governed by the [A-SDLC framework](https://github.com/jvanheerikhuize/a-sdlc) — an Agentic Software
+Development Life Cycle defining how software is built, tested, and released when AI agents work
+alongside human developers. Compliant with DORA and the EU AI Act out of the box.
 
 ---
 
-## Using This Template
+## Quick Start
 
-### 1. Create your project repository from this template
+### 1. Create your project from this template
+
+On GitHub: **Use this template → Create a new repository**, then clone it.
 
 ```bash
-# On GitHub: click "Use this template" → "Create a new repository"
-# Or clone and re-init:
-git clone https://github.com/<your-org>/a-sdlc-consumer-template.git my-project
-cd my-project
-git remote set-url origin https://github.com/<your-org>/my-project.git
+git clone https://github.com/<your-org>/<your-project>.git
+cd <your-project>
 ```
 
 ### 2. Initialise the governance submodule
@@ -26,14 +27,14 @@ git submodule update --init --recursive
 
 ### 3. Configure your project
 
-Edit `asdlc-consumer.yaml` — set your project name, description, stack, and team.
+Edit `asdlc-consumer.yaml` — set the project name, description, stack, and team.
 
-### 4. Start developing
+### 4. Open in your AI coding agent
 
-Open the project in Claude Code (or any A-SDLC-compatible agent).
-The agent will load `CLAUDE.md` → `AGENTS.md` → the governance framework automatically.
+The agent loads `AGENTS.md` (or its tool-specific adapter shim) automatically.
+It will read the core directives and governance framework before any work begins.
 
-To start your first feature:
+### 5. Start your first feature
 
 ```bash
 cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
@@ -47,39 +48,63 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 
 ```text
 <project>/
-├── a-sdlc/                        ← Governance framework (submodule — read-only)
-├── AGENTS.md                      ← Agent entrypoint — all agents read this first
-├── CLAUDE.md                      ← Claude Code session instructions
-├── README.md                      ← This file
-├── asdlc-consumer.yaml            ← Project configuration
+├── a-sdlc/                          ← Governance framework (submodule — read-only)
 │
-├── specs/                         ← Feature specifications (output of Stage 1)
-│   └── FEAT-0000-template.yaml
+├── .agent/                          ← Tool-agnostic agent config (the canonical source)
+│   ├── settings.yaml                ← Startup sequence, paths, rules, read-only boundaries
+│   └── README.md                    ← How the adapter pattern works
 │
-└── stages/                        ← Stage workspaces
+├── AGENTS.md                        ← Primary agent entry point — all agents read this first
+│
+├── CLAUDE.md                        ← Claude Code adapter shim
+├── .cursorrules                     ← Cursor adapter shim (legacy format)
+├── .cursor/rules/asdlc.mdc          ← Cursor adapter shim (rules format)
+├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
+├── .windsurfrules                   ← Windsurf adapter shim
+│
+├── README.md                        ← This file
+├── asdlc-consumer.yaml              ← Project configuration (fill in when creating a sibling)
+│
+├── specs/                           ← Feature specifications (output of Stage 1)
+│   └── FEAT-0000-template.yaml      ← Template — do not fill in directly
+│
+└── stages/                          ← Stage workspaces
     ├── 01-intent-ingestion/
     │   └── artifacts/
-    │       ├── inputs/            ← Submit change requests here
-    │       └── outputs/
-    ├── 02-system-design/
-    │   └── artifacts/outputs/
-    ├── 03-coding-implementation/
-    │   └── artifacts/outputs/
-    ├── 04-testing-documentation/
-    │   └── artifacts/outputs/
-    ├── 05-deployment-release/
-    │   └── artifacts/outputs/
-    └── 06-observability-maintenance/
-        └── artifacts/outputs/
+    │       ├── inputs/              ← Submit change requests here
+    │       └── outputs/             ← Agent-produced artifacts
+    ├── 02-system-design/artifacts/outputs/
+    ├── 03-coding-implementation/artifacts/outputs/
+    ├── 04-testing-documentation/artifacts/outputs/
+    ├── 05-deployment-release/artifacts/outputs/
+    └── 06-observability-maintenance/artifacts/outputs/
 ```
 
 ---
 
-## The Six Stages
+## Agent Support
+
+The template uses an **adapter pattern**: all agent logic lives in `AGENTS.md` and `.agent/settings.yaml`.
+Tool-specific files are thin shims that simply load these two files.
+
+| Tool | Adapter file |
+| ---- | ------------ |
+| Claude Code | `CLAUDE.md` |
+| Cursor (legacy) | `.cursorrules` |
+| Cursor (rules) | `.cursor/rules/asdlc.mdc` |
+| GitHub Copilot | `.github/copilot-instructions.md` |
+| Windsurf | `.windsurfrules` |
+| Any other agent | Read `AGENTS.md` directly |
+
+Adding a new agent: create a shim in the tool's required location pointing to `AGENTS.md`, then register it in `.agent/settings.yaml`.
+
+---
+
+## The Six Lifecycle Stages
 
 | Stage | Name | Purpose |
 | ----- | ---- | ------- |
-| 1 | Intent Ingestion | Capture, disambiguate, and structure requirements into a Feature Spec |
+| 1 | Intent Ingestion | Capture and structure requirements into a Feature Spec |
 | 2 | System Design | Architecture, threat modelling, and technical specification |
 | 3 | Coding & Implementation | Implementation with quality gates, security scans, and PR review |
 | 4 | Testing & Documentation | Verification, documentation, and risk threshold evaluation |
@@ -90,15 +115,17 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 
 ## Governance
 
-All 50 controls (QC, RC, SC, AC, GC) from the A-SDLC framework apply to this project.
-The framework provides DORA and EU AI Act compliance coverage.
+All 50 controls (QC, RC, SC, AC, GC) from the A-SDLC framework apply.
+Provides DORA and EU AI Act compliance coverage.
 
-See `a-sdlc/README.md` for the full framework documentation.
-See `a-sdlc/AGENTS.md` for agent operating instructions.
+- Framework docs: `a-sdlc/README.md`
+- Agent operating instructions: `a-sdlc/AGENTS.md`
+- Control registry: `a-sdlc/controls/registry.yaml`
+- Regulatory mappings: `a-sdlc/regulatory/compliance-matrix.yaml`
 
 ---
 
-## Keeping Governance Up to Date
+## Keeping Governance Current
 
 ```bash
 git submodule update --remote a-sdlc
@@ -106,4 +133,4 @@ git add a-sdlc
 git commit -m "chore: update a-sdlc governance framework"
 ```
 
-Review `a-sdlc/` changes before merging — governance updates may introduce new controls or modify delegation patterns.
+Review `a-sdlc/` changes before committing — governance updates may introduce new controls or modify delegation patterns.
