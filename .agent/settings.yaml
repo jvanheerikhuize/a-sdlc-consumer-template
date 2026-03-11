@@ -75,5 +75,6 @@ rules:
 adapters:
   - tool: Claude Code
     file: CLAUDE.md
+    note: gitignored — generated locally, not committed
   - tool: GitHub Copilot
     file: .github/copilot-instructions.md

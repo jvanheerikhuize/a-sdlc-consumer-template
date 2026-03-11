@@ -43,7 +43,6 @@ The full startup sequence, including machine-readable form, is also in `.agent/s
 │
 ├── AGENTS.md                        ← This file — primary entry point for all agents
 │
-├── CLAUDE.md                        ← Claude Code adapter shim → reads AGENTS.md
 ├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
 │
 ├── README.md                        ← Human-readable project overview
@@ -125,7 +124,7 @@ All tool-specific files are thin shims that point here. No logic lives in them.
 
 | Tool | Adapter file |
 | ---- | ------------ |
-| Claude Code | `CLAUDE.md` |
+| Claude Code | `CLAUDE.md` *(gitignored — generated locally)* |
 | GitHub Copilot | `.github/copilot-instructions.md` |
 
 To add a new agent: create a thin shim in the tool's required location, point it to `AGENTS.md` and `.agent/settings.yaml`, register it in `.agent/settings.yaml` under `adapters`.
