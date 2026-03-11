@@ -2,8 +2,8 @@
 # Agent Settings — Tool-Agnostic Configuration
 # =============================================================================
 # This file is the single source of truth for agent behaviour in this project.
-# It is read by the generic AGENTS.md entrypoint and referenced by all
-# tool-specific adapter files (e.g. copilot-instructions.md)
+# It is read by the generic AGENTS.md entrypoint.
+# Any agent, regardless of tool, should read AGENTS.md as its entry point.
 #
 # Any agent framework that can parse YAML can consume this directly.
 # =============================================================================
@@ -70,8 +70,3 @@ rules:
   - id: R-07
     text: Never proceed on ambiguity — refuse and explain, then await human direction.
 
-# ── Adapters ──────────────────────────────────────────────────────────────────
-# Tool-specific files that load this config. All are thin shims — content lives here.
-adapters:
-  - tool: GitHub Copilot
-    file: .github/copilot-instructions.md

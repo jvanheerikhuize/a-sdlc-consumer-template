@@ -39,11 +39,9 @@ The full startup sequence, including machine-readable form, is also in `.agent/s
 │
 ├── .agent/                          ← Tool-agnostic agent config (canonical)
 │   ├── settings.yaml                ← Startup sequence, paths, rules, read-only boundaries
-│   └── README.md                    ← How the adapter pattern works
+│   └── README.md                    ← How the config is structured
 │
 ├── AGENTS.md                        ← This file — primary entry point for all agents
-│
-├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
 │
 ├── README.md                        ← Human-readable project overview
 ├── asdlc-consumer.yaml              ← Project manifest (name, stack, team, regulatory scope)
@@ -115,18 +113,6 @@ All rules from `a-sdlc/AGENTS.md` apply. These are the most critical:
 - **Respect stage boundaries** — do not perform Stage N+1 work before passing Stage N gates
 
 Full rules and machine-readable form: `.agent/settings.yaml`
-
----
-
-## Agent Adapters
-
-All tool-specific files are thin shims that point here. No logic lives in them.
-
-| Tool | Adapter file |
-| ---- | ------------ |
-| GitHub Copilot | `.github/copilot-instructions.md` |
-
-To add a new agent: create a thin shim in the tool's required location, point it to `AGENTS.md` and `.agent/settings.yaml`, register it in `.agent/settings.yaml` under `adapters`.
 
 ---
 

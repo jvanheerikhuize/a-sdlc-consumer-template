@@ -11,18 +11,9 @@ It is tool- and model-agnostic: any AI coding assistant can read it.
 
 ## How It Works
 
-```
-.agent/settings.yaml            ← canonical config (this directory)
-        ↑
-        referenced by
-        ↓
-AGENTS.md                       ← primary human-readable entry point (all agents)
-.github/copilot-instructions.md ← GitHub Copilot adapter shim
+```text
+.agent/settings.yaml   ← machine-readable canonical config
+AGENTS.md              ← human-readable entry point for all agents
 ```
 
-## Adding a New Agent Adapter
-
-1. Create a thin shim file in the project root (or the tool's required location).
-2. The shim should instruct the agent to read `AGENTS.md` and `.agent/settings.yaml`.
-3. Register it in `.agent/settings.yaml` under `adapters`.
-4. Keep all logic in `AGENTS.md` — shims must not duplicate content.
+Any agent reads `AGENTS.md` first. `settings.yaml` provides the same information in structured YAML for programmatic consumption.

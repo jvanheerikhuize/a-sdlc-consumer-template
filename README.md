@@ -31,8 +31,8 @@ Edit `asdlc-consumer.yaml` — set the project name, description, stack, and tea
 
 ### 4. Open in your AI coding agent
 
-The agent loads `AGENTS.md` (or its tool-specific adapter shim) automatically.
-It will read the core directives and governance framework before any work begins.
+The agent reads `AGENTS.md` as its entry point.
+It will load the core directives and governance framework before any work begins.
 
 ### 5. Start your first feature
 
@@ -52,11 +52,9 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 │
 ├── .agent/                          ← Tool-agnostic agent config (the canonical source)
 │   ├── settings.yaml                ← Startup sequence, paths, rules, read-only boundaries
-│   └── README.md                    ← How the adapter pattern works
+│   └── README.md                    ← How the config is structured
 │
 ├── AGENTS.md                        ← Primary agent entry point — all agents read this first
-│
-├── .github/copilot-instructions.md  ← GitHub Copilot adapter shim
 │
 ├── README.md                        ← This file
 ├── asdlc-consumer.yaml              ← Project configuration (fill in when creating a sibling)
@@ -80,15 +78,7 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 
 ## Agent Support
 
-The template uses an **adapter pattern**: all agent logic lives in `AGENTS.md` and `.agent/settings.yaml`.
-Tool-specific files are thin shims that simply load these two files.
-
-| Tool | Adapter file |
-| ---- | ------------ |
-| GitHub Copilot | `.github/copilot-instructions.md` |
-| Any other agent | Read `AGENTS.md` directly |
-
-Adding a new agent: create a shim in the tool's required location pointing to `AGENTS.md`, then register it in `.agent/settings.yaml`.
+This template is fully agent-agnostic. `AGENTS.md` is the single entry point — any AI coding assistant reads it directly. Structured configuration for programmatic consumption is in `.agent/settings.yaml`.
 
 ---
 
