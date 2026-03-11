@@ -14,6 +14,7 @@ If you discover a security issue in this template (e.g. a file that could introd
 Report privately via [GitHub Security Advisories](../../security/advisories/new) or by emailing the repository owner directly.
 
 Please include:
+
 - A description of the issue and its potential impact
 - Steps to reproduce or a proof of concept
 - Any suggested remediation
