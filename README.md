@@ -34,6 +34,7 @@ Open the project in Claude Code (or any A-SDLC-compatible agent).
 The agent will load `CLAUDE.md` → `AGENTS.md` → the governance framework automatically.
 
 To start your first feature:
+
 ```bash
 cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
    stages/01-intent-ingestion/artifacts/inputs/CR-0001-my-feature.yaml
@@ -44,7 +45,7 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 
 ## Repository Structure
 
-```
+```text
 <project>/
 ├── a-sdlc/                        ← Governance framework (submodule — read-only)
 ├── AGENTS.md                      ← Agent entrypoint — all agents read this first
@@ -77,7 +78,7 @@ cp stages/01-intent-ingestion/artifacts/inputs/CR-0000-template.yaml \
 ## The Six Stages
 
 | Stage | Name | Purpose |
-|-------|------|---------|
+| ----- | ---- | ------- |
 | 1 | Intent Ingestion | Capture, disambiguate, and structure requirements into a Feature Spec |
 | 2 | System Design | Architecture, threat modelling, and technical specification |
 | 3 | Coding & Implementation | Implementation with quality gates, security scans, and PR review |
